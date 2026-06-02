@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maureen Essah | Notch Deliverables</title>
+<link rel="icon" type="image/svg+xml" href="favicon-main.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --p-deep: #280A50;
+  --p-dark: #2C1860;
+  --p-mid: #3D1F82;
+  --p-core: #5E1FAE;
+  --p-bright: #8040D8;
+  --p-light: #BCA8E8;
+  --g: #E09010;
+  --g-bright: #F0A820;
+  --ink-muted: #9080B8;
+  --white: #FFFFFF;
+  --teal: #12B5A5;
+  --teal-dim: rgba(18, 181, 165, 0.15);
+  --teal-border: rgba(18, 181, 165, 0.22);
+  --accent-cyan: #1CC9D6;
+  --accent-cyan-soft: rgba(28, 201, 214, 0.09);
+  --accent-cyan-border: rgba(28, 201, 214, 0.36);
+  --accent-blue: #6BA3D6;
+  --accent-blue-soft: rgba(107, 163, 214, 0.12);
+  --accent-blue-border: rgba(107, 163, 214, 0.35);
+  --coral: #ff8060;
+  --coral-soft: rgba(255, 128, 96, 0.1);
+  --coral-border: rgba(255, 128, 96, 0.28);
+  --logo-ink: #fcfbec;
+  --logo-accent: #18C8CA;
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --logo-serif: 'Fraunces', Georgia, serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #07091a;
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--coral);
+  z-index: 999;
+  transition: width 0.08s linear;
+}
+
+.w {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+@media (max-width: 640px) {
+  .w { padding: 0 1.5rem; }
+  .wrap { padding: 0 1.25rem; }
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: #060817;
+  border-bottom: 1px solid rgba(94, 31, 174, 0.3);
+}
+
+.nav-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 58px;
+  gap: 1rem;
+}
+
+.nav-logo {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 58px;
+  padding-right: 16px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.nav-logo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--logo-accent);
+  box-shadow: 0 0 16px rgba(24, 200, 202, 0.8);
+}
+
+.nav-logo-label {
+  display: inline-flex;
+  align-items: center;
+  font: 700 9.5px/1 var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.brand-logo {
+  display: inline-block;
+  font-family: var(--logo-serif);
+  font-size: inherit;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--logo-ink);
+}
+
+.logo-italic,
+.logo-period {
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--logo-accent);
+}
+
+.logo-italic { font-style: italic; }
+.logo-period { font-style: normal; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex: 0 0 auto;
+  justify-content: center;
+}
+
+@media (max-width: 800px) {
+  .nav-links { display: none; }
+}
+
+.nav-link {
+  font-family: var(--sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  padding: 0.4rem 0.85rem;
+  border-radius: 3px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.nav-link:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.hero {
+  padding: 3.25rem 0 0.25rem;
+  text-align: center;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan-border);
+  background: var(--accent-cyan-soft);
+  padding: 0.38rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: up 0.7s var(--ease) 0.05s forwards;
+}
+
+.hero-pill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.hero-name {
+  font-family: var(--display);
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: up 0.7s var(--ease) 0.12s forwards;
+}
+
+.hero-role {
+  font-family: var(--display);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--p-light);
+  margin-bottom: 1.35rem;
+  opacity: 0;
+  animation: up 0.7s var(--ease) 0.19s forwards;
+}
+
+.hero-rule {
+  width: 40px;
+  height: 1px;
+  margin: 0 auto 1.35rem;
+  background: linear-gradient(90deg, transparent, var(--g-bright), transparent);
+  opacity: 0;
+  animation: up 0.5s var(--ease) 0.24s forwards;
+}
+
+.hero-body {
+  max-width: 540px;
+  margin: 0 auto 1rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  animation: up 0.7s var(--ease) 0.3s forwards;
+}
+
+.hero-meta {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 0.03em;
+  opacity: 0;
+  animation: up 0.7s var(--ease) 0.36s forwards;
+}
+
+.hero-meta strong {
+  color: var(--g-bright);
+  font-weight: 600;
+}
+
+.portfolio { padding-bottom: 6rem; }
+
+.chapter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  animation: up 0.6s var(--ease) 0.4s forwards;
+}
+
+.chapter-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(188, 168, 232, 0.15), transparent);
+}
+
+.chapter-text {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.32);
+  white-space: nowrap;
+}
+
+.gap { margin-bottom: 3.5rem; }
+.gap-sm { margin-bottom: 1rem; }
+
+.card {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(188, 168, 232, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.28s var(--ease), background 0.28s var(--ease), border-color 0.28s var(--ease);
+}
+
+.flat-card { height: 100%; }
+
+.card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.065);
+}
+
+.card--static, 
+.card--static:hover {
+  transform: none;
+  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(188, 168, 232, 0.1);
+  cursor: default;
+}
+
+.card--landing-one { border-color: rgba(232, 73, 90, 0.28); background: linear-gradient(145deg, rgba(232, 73, 90, 0.09), rgba(255, 255, 255, 0.025)); }
+.card--landing-two { border-color: rgba(28, 201, 214, 0.3); background: linear-gradient(145deg, rgba(28, 201, 214, 0.085), rgba(255, 255, 255, 0.025)); }
+.card--landing-three { border-color: rgba(183, 217, 74, 0.3); background: linear-gradient(145deg, rgba(183, 217, 74, 0.085), rgba(255, 255, 255, 0.025)); }
+.card--landing-four { border-color: rgba(240, 168, 32, 0.3); background: linear-gradient(145deg, rgba(240, 168, 32, 0.085), rgba(255, 255, 255, 0.025)); }
+
+.card--acquisition-sa.card--static,
+.card--content-sa.card--static,
+.card--acquisition-nolt.card--static,
+.card--content-nolt.card--static,
+.card--landing-one.card--static,
+.card--landing-two.card--static,
+.card--landing-three.card--static,
+.card--landing-four.card--static {
+  cursor: pointer;
+}
+
+.card--acquisition-sa:hover,
+.card--content-sa:hover,
+.card--acquisition-nolt:hover,
+.card--content-nolt:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.065);
+}
+
+.card--acquisition-sa:hover .card-top-bar,
+.card--content-sa:hover .card-top-bar,
+.card--acquisition-nolt:hover .card-top-bar,
+.card--content-nolt:hover .card-top-bar {
+  opacity: 1;
+}
+
+.card-top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  opacity: 0;
+  transition: opacity 0.28s;
+}
+
+.card:hover .card-top-bar { opacity: 1; }
+
+.card--static .card-top-bar,
+.card--static:hover .card-top-bar { opacity: 0; }
+
+.card-body { padding: 1.8rem 2rem 1.7rem; }
+.card-body-sm { padding: 1.5rem 1.75rem 1.5rem; }
+
+.badge {
+  display: inline-block;
+  font-size: 0.57rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.65rem;
+  border-radius: 2px;
+  margin-bottom: 0.9rem;
+}
+
+.badge-playbook,
+.badge-acquisition,
+.badge-content {
+  color: var(--accent-cyan);
+  background: var(--accent-cyan-soft);
+  border: 1px solid var(--accent-cyan-border);
+}
+
+.badge-amber {
+  color: var(--g-bright);
+  background: rgba(240, 168, 32, 0.1);
+  border: 1px solid rgba(240, 168, 32, 0.28);
+}
+
+.badge-dark {
+  color: var(--p-light);
+  background: rgba(128, 64, 216, 0.1);
+  border: 1px solid rgba(128, 64, 216, 0.28);
+}
+
+.badge-coral {
+  color: var(--coral);
+  background: var(--coral-soft);
+  border: 1px solid var(--coral-border);
+}
+
+.badge-blue {
+  color: var(--accent-blue);
+  background: var(--accent-blue-soft);
+  border: 1px solid var(--accent-blue-border);
+}
+
+.card-num {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.75rem;
+  font-family: var(--display);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.11);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.card-title {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+
+.card-title-sm {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+
+.card-subtitle {
+  font-size: 0.77rem;
+  color: rgba(255, 255, 255, 0.32);
+  line-height: 1.45;
+  margin-bottom: 0.85rem;
+  font-style: italic;
+}
+
+.card-desc {
+  font-size: 0.83rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1.4rem;
+}
+
+.card-desc-sm {
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.38);
+  margin-bottom: 0;
+}
+
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+  transition: color 0.22s;
+}
+
+.card--playbook:hover .card-cta,
+.card--amber:hover .card-cta { color: var(--coral); }
+.card--acquisition:hover .card-cta,
+.card--content:hover .card-cta { color: var(--coral); }
+.card--coral:hover .card-cta { color: var(--coral); }
+.card--dark:hover .card-cta { color: var(--coral); }
+.card--blue:hover .card-cta { color: var(--coral); }
+
+.bar-playbook,
+.bar-amber { background: linear-gradient(90deg, var(--g), var(--g-bright)); }
+.bar-acquisition-sa { background: linear-gradient(90deg, #E8495A, #ff6b63); }
+.bar-acquisition-nolt { background: linear-gradient(90deg, #b7d94a, #c8e074); }
+.bar-content-sa { background: linear-gradient(90deg, #E8495A, #ff6b63); }
+.bar-content-nolt { background: linear-gradient(90deg, #b7d94a, #c8e074); }
+.bar-landing-one { background: linear-gradient(90deg, #E8495A, #ff8060); }
+.bar-landing-two { background: linear-gradient(90deg, #1CC9D6, #6BA3D6); }
+.bar-landing-three { background: linear-gradient(90deg, #b7d94a, #d4f53c); }
+.bar-landing-four { background: linear-gradient(90deg, #E09010, #F0A820); }
+.bar-coral { background: linear-gradient(90deg, var(--coral), #ff9070); }
+.bar-dark { background: linear-gradient(90deg, var(--p-core), var(--p-bright)); }
+.bar-blue { background: linear-gradient(90deg, #4A90D9, #6BA3D6); }
+
+.card--playbook:hover,
+.card--acquisition:hover,
+.card--content:hover,
+.card--amber:hover,
+.card--coral:hover,
+.card--dark:hover,
+.card--blue:hover { border-color: var(--accent-cyan-border); }
+
+.card--acquisition-sa .badge-acquisition,
+.card--content-sa .badge-content { 
+  border: 1px solid #E8495A; 
+  color: #E8495A; 
+}
+.card--acquisition-nolt .badge-acquisition,
+.card--content-nolt .badge-content { 
+  border: 1px solid #b7d94a; 
+  color: #b7d94a; 
+}
+.card--landing-one .badge-content { border-color: #E8495A; color: #E8495A; background: rgba(232, 73, 90, 0.09); }
+.card--landing-two .badge-content { border-color: #1CC9D6; color: #1CC9D6; background: rgba(28, 201, 214, 0.09); }
+.card--landing-three .badge-content { border-color: #b7d94a; color: #b7d94a; background: rgba(183, 217, 74, 0.09); }
+.card--landing-four .badge-content { border-color: #F0A820; color: #F0A820; background: rgba(240, 168, 32, 0.09); }
+
+.card--acquisition-sa.card--static,
+.card--content-sa.card--static,
+.card--acquisition-nolt.card--static,
+.card--content-nolt.card--static {
+  cursor: pointer;
+}
+
+.card-full { width: 100%; }
+
+.landing-block {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0 2.5rem;
+  align-items: start;
+}
+
+.landing-block + .landing-block { margin-top: 2.5rem; }
+
+@media (max-width: 700px) {
+  .landing-block { grid-template-columns: 1fr; }
+  .landing-label {
+    display: block;
+    position: static;
+    margin-bottom: 1.2rem;
+    padding-top: 0;
+  }
+}
+
+.landing-label {
+  padding-top: 0.25rem;
+  position: sticky;
+  top: 80px;
+}
+
+.landing-label-eyebrow {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 0.6rem;
+}
+
+.landing-label-title {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.landing-label-note {
+  font-size: 0.73rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.landing-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.landing-cards > * { min-width: 0; }
+
+@media (max-width: 500px) {
+  .landing-cards { grid-template-columns: 1fr; }
+}
+
+footer {
+  background: #060817;
+  border-top: 1px solid rgba(94, 31, 174, 0.25);
+  padding: 2rem 0;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.foot-brand {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: -0.01em;
+}
+
+.foot-brand.brand-logo {
+  font-family: var(--logo-serif);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--logo-ink);
+}
+
+@keyframes up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-1 { opacity: 0; animation: up 0.6s var(--ease) 0.42s forwards; }
+.fade-2 { opacity: 0; animation: up 0.6s var(--ease) 0.5s forwards; }
+.fade-3 { opacity: 0; animation: up 0.6s var(--ease) 0.58s forwards; }
+.fade-4 { opacity: 0; animation: up 0.6s var(--ease) 0.66s forwards; }
+.fade-5 { opacity: 0; animation: up 0.6s var(--ease) 0.74s forwards; }
+.fade-6 { opacity: 0; animation: up 0.6s var(--ease) 0.82s forwards; }
+.fade-7 { opacity: 0; animation: up 0.6s var(--ease) 0.9s forwards; }
+.fade-8 { opacity: 0; animation: up 0.6s var(--ease) 0.98s forwards; }
+
+.moe-home-link {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 9000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid rgba(212, 245, 60, 0.28);
+  border-radius: 999px;
+  background: rgba(6, 8, 23, 0.82);
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font: 700 10px/1 var(--sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+}
+
+.moe-home-link svg {
+  width: 19px;
+  height: 19px;
+  stroke: #d4f53c;
+}
+
+.moe-home-link:hover {
+  border-color: rgba(212, 245, 60, 0.58);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 560px) {
+  .moe-home-link { left: 12px; bottom: 12px; }
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<nav>
+  <div class="w">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#"><span class="nav-logo-dot" aria-hidden="true"></span><span class="nav-logo-label">NOTCH</span></a>
+      <div class="nav-links">
+        <a class="nav-link" href="#deliverables">Content</a>
+        <a class="nav-link" href="#landing-pages">Landing Pages</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-pill"><span class="hero-pill-dot"></span>Work Sample</div>
+      <h1 class="hero-name">Maureen Essah</h1>
+      <p class="hero-role">Marketing Growth, Acquisition &amp; Content</p>
+      <div class="hero-rule"></div>
+      <p class="hero-body">Four landing page directions and a 90-day content command center for turning live football moments into growth.</p>
+      
+    </section>
+
+    <div class="portfolio">
+      <div class="chapter fade-1" id="deliverables">
+        <span class="chapter-text">01 &nbsp; Strategy &amp; Content Engine</span>
+        <span class="chapter-line"></span>
+      </div>
+
+      <div class="gap-sm fade-2">
+        <a class="card card--playbook card-full" href="https://notchcontent.vercel.app/" target="_blank" rel="noreferrer">
+          <div class="card-top-bar bar-playbook"></div>
+          <div class="card-body">
+            <span class="card-num">01</span>
+            <span class="badge badge-playbook">90-Day Plan</span>
+            <h2 class="card-title">Notch Content Command Center</h2>
+            <p class="card-subtitle">Market moments into acquisition loops</p>
+            <p class="card-desc">How Notch can convert live football catalysts into platform-native output: X threads, Reddit posts, Discord prompts, creator briefs, market ideas, and launch-timed push moments. The emphasis is simple: make the data feel useful before asking people to trade.</p>
+            <span class="card-cta">View Command Center</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="gap"></div>
+      <div class="chapter fade-3" id="landing-pages">
+        <span class="chapter-text">02 &nbsp; Landing Page Directions</span>
+        <span class="chapter-line"></span>
+      </div>
+
+      <div class="landing-block fade-4">
+        <div class="landing-label">
+          <p class="landing-label-eyebrow">Launch Narrative</p>
+          <p class="landing-label-title">Four Ways Into Notch</p>
+        </div>
+
+        <div class="landing-cards">
+          <a href="notch%20landing%20page/notch%20landing%20page%20(1).html" class="card card--landing-one card--static flat-card">
+            <div class="card-top-bar bar-landing-one"></div>
+            <div class="card-body-sm">
+              <span class="card-num">02</span>
+              <span class="badge badge-acquisition">Landing Page</span>
+              <h3 class="card-title-sm">Stop Being Right For Free</h3>
+              <p class="card-desc-sm">High-conviction launch page built around football knowledge becoming a tradable position.</p>
+            </div>
+          </a>
+
+          <a href="notch%20landing%20page/notch%20landing%20page%20(2).html" class="card card--landing-two card--static flat-card">
+            <div class="card-top-bar bar-landing-two"></div>
+            <div class="card-body-sm">
+              <span class="card-num">03</span>
+              <span class="badge badge-content">Landing Page</span>
+              <h3 class="card-title-sm">Trade Your Read</h3>
+              <p class="card-desc-sm">Market-terminal direction with live-tape energy, price movement, and visible liquidity.</p>
+            </div>
+          </a>
+
+          <a href="notch%20landing%20page/notch%20landing%20page%20(3).html" class="card card--landing-three card--static flat-card">
+            <div class="card-top-bar bar-landing-three"></div>
+            <div class="card-body-sm">
+              <span class="card-num">04</span>
+              <span class="badge badge-content">Landing Page</span>
+              <h3 class="card-title-sm">Own The Outcome</h3>
+              <p class="card-desc-sm">Product-tour page explaining the mechanics, risks, markets, and wallet flow.</p>
+            </div>
+          </a>
+
+          <a href="notch%20landing%20page/notch%20landing%20page%20(4).html" class="card card--landing-four card--static flat-card">
+            <div class="card-top-bar bar-landing-four"></div>
+            <div class="card-body-sm">
+              <span class="card-num">05</span>
+              <span class="badge badge-content">Landing Page</span>
+              <h3 class="card-title-sm">Long Your Team</h3>
+              <p class="card-desc-sm">Fan-first route that turns club loyalty into open markets and clear action.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="w">
+    <div class="foot">
+      
+      <span class="foot-brand" style="margin-left:auto;color:rgba(255,255,255,0.3);font-weight:400">Marketing Growth, Acquisition &amp; Content</span>
+    </div>
+  </div>
+</footer>
+
+<a class="moe-home-link" href="https://moeessah.github.io/notch/" aria-label="Home">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M3.5 10.8 12 3.8l8.5 7v9.4a.8.8 0 0 1-.8.8h-5.2v-6.2h-5V21H4.3a.8.8 0 0 1-.8-.8v-9.4Z" stroke-width="1.8" stroke-linejoin="round"/>
+  </svg>
+</a>
+
+<script>
+window.addEventListener('scroll', function () {
+  const bar = document.getElementById('bar');
+  const scrollable = document.body.scrollHeight - window.innerHeight;
+  const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  if (bar) {
+    bar.style.width = Math.min(progress, 100) + '%';
+  }
+});
+</script>
+</body>
+</html>
