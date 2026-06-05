@@ -37,7 +37,7 @@
   --coral-border: rgba(255, 128, 96, 0.28);
   --logo-ink: #fcfbec;
   --logo-accent: #18C8CA;
-  --display: 'Cormorant Garamond', Georgia, serif;
+  --display: 'DM Serif Display', Georgia, serif;
   --sans: 'DM Sans', system-ui, sans-serif;
   --logo-serif: 'Fraunces', Georgia, serif;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -1255,6 +1255,152 @@ body.series-page .foot-brand{
   body.series-page .w{padding:0 1.5rem}
 }
 
+
+/* TYPOGRAPHY MATCH — portfolio/Kolo sizing only */
+body.series-page .hero-name{
+  font-family:var(--serif);
+  font-size:clamp(2.8rem,5.5vw,5rem);
+  font-weight:400;
+  letter-spacing:-0.02em;
+  line-height:0.9;
+}
+body.series-page .hero-role{
+  font-family:var(--mono);
+  font-size:0.6rem;
+  font-weight:500;
+  letter-spacing:0.18em;
+  line-height:1;
+}
+body.series-page .hero-body{
+  max-width:520px;
+  font-size:0.78rem;
+  font-weight:300;
+  line-height:1.65;
+}
+body.series-page .card-title,
+body.series-page .card-title-sm{
+  font-family:var(--serif);
+  font-size:clamp(1.5rem,2.8vw,2.6rem);
+  font-weight:400;
+  letter-spacing:-0.02em;
+  line-height:0.95;
+}
+body.series-page .card-title em,
+body.series-page .card-title-sm em{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+}
+body.series-notch .card--playbook .card-title{
+  font-size:clamp(1.5rem,2.8vw,2.6rem);
+}
+body.series-page .landing-label-title{
+  font-family:var(--serif);
+  font-size:1.9rem;
+  font-weight:400;
+  font-style:italic;
+  letter-spacing:-0.02em;
+  line-height:0.98;
+}
+body.series-page .card-desc,
+body.series-page .card-desc-sm,
+body.series-page .card-subtitle,
+body.series-page .landing-label-note{
+  font-size:0.75rem;
+  font-weight:300;
+  line-height:1.65;
+}
+@media(max-width:560px){
+  body.series-page .hero-name{font-size:clamp(2.8rem,16vw,4.5rem)}
+}
+
+
+/* Remove broken landing-card accent seams */
+body.series-page .landing-cards .card-top-bar{
+  display:none;
+}
+
+
+/* Seamless chapter headers */
+body.series-page .chapter{
+  gap:0;
+  background:rgba(255,255,255,0.025);
+  border-top:1px solid rgba(255,255,255,0.04);
+  border-bottom:1px solid rgba(255,255,255,0.025);
+}
+body.series-page .chapter-text{
+  background:transparent;
+  border:0;
+}
+body.series-page .chapter-line{
+  background:linear-gradient(90deg,rgba(255,255,255,0.035),transparent);
+  border:0;
+}
+
+
+/* Remove lighter wrapper rectangles, keep one darker section-header band */
+body.series-page .chapter{
+  background:rgba(6,15,29,0.72)!important;
+  border-top:1px solid rgba(255,255,255,0.035)!important;
+  border-bottom:1px solid rgba(255,255,255,0.025)!important;
+}
+body.series-page .chapter-text,
+body.series-page .chapter-line,
+body.series-page .landing-label,
+body.series-page .landing-cards{
+  background:transparent!important;
+  border:0!important;
+}
+body.series-page .landing-label{
+  padding-left:0;
+}
+body.series-page .landing-cards{
+  padding:0;
+}
+
+
+/* Sticky Landing Pages label, non-sticky orange divider over landing cards */
+body.series-page .chapter:first-of-type{
+  position:sticky;
+  top:58px;
+  z-index:50;
+}
+
+body.series-page .landing-block:first-of-type{
+  position:relative;
+  padding-top:2px;
+}
+
+body.series-page .landing-block:first-of-type::before{
+  content:"";
+  position:absolute;
+  left:230px;
+  right:0;
+  top:0;
+  height:2px;
+  background:var(--series-amber);
+  pointer-events:none;
+  z-index:2;
+}
+
+@media(max-width:900px){
+  body.series-page .landing-block:first-of-type::before{
+    left:0;
+  }
+}
+
+
+/* Align landing-page card text from the same top position */
+body.series-page .landing-cards .card-body-sm{
+  justify-content:flex-start;
+}
+
+
+/* Remove purple strategy card line */
+body.series-page .gap-sm .card-top-bar{
+  display:none;
+}
+
 </style>
 </head>
 <body class="series-page series-notch">
@@ -1281,13 +1427,12 @@ body.series-page .foot-brand{
 </section>
 <div class="portfolio">
 <div class="chapter fade-1" id="landing-pages">
-<span class="chapter-text">01   Landing Page Directions</span>
+<span class="chapter-text">01   Landing Pages</span>
 <span class="chapter-line"></span>
 </div>
 <div class="landing-block fade-2">
 <div class="landing-label">
-<p class="landing-label-eyebrow">Launch Narrative</p>
-<p class="landing-label-title">Four Ways Into Notch</p>
+
 </div>
 <div class="landing-cards">
 <a class="card card--landing-one card--static flat-card" href="notch%20landing%20page/notch%20landing%20page%20(1).html">
@@ -1356,11 +1501,6 @@ body.series-page .foot-brand{
 </div>
 </div>
 </footer>
-<a aria-label="Home" class="moe-home-link" href="https://moeessah.github.io/notch/">
-<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
-<path d="M3.5 10.8 12 3.8l8.5 7v9.4a.8.8 0 0 1-.8.8h-5.2v-6.2h-5V21H4.3a.8.8 0 0 1-.8-.8v-9.4Z" stroke-linejoin="round" stroke-width="1.8"></path>
-</svg>
-</a>
 <script>
 window.addEventListener('scroll', function () {
   const bar = document.getElementById('bar');
